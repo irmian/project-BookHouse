@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html ng-app="bookStoreApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="books, book, store, house">
+    <title>Book House</title>
+	<meta charset="utf-8" />
+    <link href="styles/bootstrap.css" rel="stylesheet" />
+    <!-- app styles -->
+    <link href="styles/style.css" rel="stylesheet" />     
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png"> 
+</head>
+<body ng-controller="BookCtrl" class="container">
+
+    <!-- header -->
+    <div class="page-header container">
+        <img src="img/logo_b11.png" class="col-md-6 col-md-offset-2" />
+        <div class="col-md-4">
+            <h4>Добро пожаловать, <b>{{UserFactory.nick}}</b></h4>
+            <h4>Ваш баланс: <b>{{UserFactory.cash}} UAH</b></h4>
+            <h4>Ваш возраст: <b>{{UserFactory.age}}</b></h4>
+        </div>     
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">            
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" ng-click="goTo('main')"><img src="img/marker.png"></a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Категории <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" ng-click="choice = '';goTo('main')" >Все</a></li>
+                            <li><a href="#" ng-click="choice = 'Детектив';goTo('main')">Детектив</a></li>
+                            <li><a href="#" ng-click="choice = 'Фэнтези';goTo('main')">Фентези</a></li>                            
+                            <li><a href="#" ng-click="choice = 'Приключения';goTo('main')">Приключения</a></li>                            
+                            <li><a href="#" ng-click="choice = 'Ужасы';goTo('main')">Ужасы</a></li>
+                            <li><a href="#" ng-click="choice = 'Роман';goTo('main')">Роман</a></li>
+                            <li><a href="#" ng-click="choice = 'Мистика';goTo('main')">Мистика</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="search" placeholder="Поиск ...">
+                    </div>                    
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" ng-click="goTo('about')">О нас</a></li>
+                    <li><a href="#" ng-click="goTo('basket')">Корзина ({{BaskFactory.length}})</a></li>
+                    <li><a href="#" ng-click="goTo('login')">Войти</a></li>                    
+                </ul>
+            </div>
+        </div>
+    </nav>   <!-- Navbar -->     
+
+    <!-- main content -->
+    <div ng-view></div>    
+
+    <!-- Footer -->
+    <footer>
+        <div class="container"> 
+            <p>Copyright &copy; Shvets Maxim Company 2016. All Rights Reserved</p>
+        </div>
+    </footer>   
+    
+    <!-- modal window -->
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" id="myModal" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <button class="close" type="button" data-dismiss="modal">×</button>
+                <h3></h3>                
+            </div>
+        </div>
+    </div>	
+        
+    <script src="lib/jquery-3.0.0.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/angular/angular-route.js"></script>    
+    <script src="lib/main.js"></script>    
+
+    <!--google maps api-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-PZvSY5EPOtkF5Cu6QOGp9pHCMAWMpkA&callback="></script> 
+    
+    <!-- main app module -->
+    <script src="lib/app.js"></script> 
+
+    <!-- factories -->
+    <script src="factories/BaskFactory.js"></script>
+    <script src="factories/UserFactory.js"></script>
+
+    <!-- controllers -->
+    <script src="controllers/BaskController.js"></script>
+    <script src="controllers/BookController.js"></script>
+    <script src="controllers/LoginController.js"></script>
+    <script src="controllers/MapController.js"></script>
+</body>
+</html>

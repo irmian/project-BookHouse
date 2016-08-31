@@ -1,0 +1,24 @@
+﻿<!-- Page shopping basket -->
+
+<h1>Ваш заказ:</h1>
+
+<!-- order list -->
+<div class="col-sm-12 basket" ng-repeat="book in BaskFactory">
+    <div class="thumbnail row">
+        <div class="col-sm-2">
+            <img ng-src="{{book.url}}" alt="book.title">
+        </div>
+        <div class="col-sm-10">
+             <h4>"{{book.title}}"</h4>
+             <p class="count">Количество: <input type="number" min="1" ng-model="count" ng-change="book.count = count; sum()" /></p>
+             <p class="price">{{book.price}} &#8372</p>
+             <button class="btn btn-success" ng-click="del(book, $index); sum()">Удалить</button>
+        </div>
+    </div>
+</div>
+
+<!-- order price -->
+<h2 ng-init="sum()">Общая сумма заказа: {{total}} &#8372</h2>
+
+<button class="btn btn-success buy" ng-click="buy(); sum()">Подтвердить заказ</button>
+
